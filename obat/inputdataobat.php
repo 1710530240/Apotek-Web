@@ -1,14 +1,16 @@
 <?php
-include "koneksi.php";
+include "../koneksi/koneksi.php";
 include "proses_input.php";
 if (isset($_POST["simpan"])) {
     if (user($_POST) == true) {
         echo  "<script>
         alert ('Berhasil ditambahkan');
+        document.location='dataobat.pap';
         </script>";
     } else {
         echo "<script>
         alert ('Gagal ditambahkan');
+        document.location='dataobat.pap';
         </script>";
     }
 }
@@ -20,8 +22,8 @@ if (isset($_POST["simpan"])) {
 <head>
     <meta charset="UTF-8">
     <title>input data obat</title>
-    <link rel="stylesheet" href="../html/css/bootstrap.css">
-    <link rel="stylesheet" href="../html/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 
 <body>
@@ -33,9 +35,9 @@ if (isset($_POST["simpan"])) {
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="DataObat.html">Data Obat</a>
-                    <a class="nav-item nav-link active" href="inputdataobat.html">Form input Obat</a>
-                    <a class="nav-item nav-link" href="card.html">Data Apoteker</a>
+                    <a class="nav-item nav-link" href="dataobat.php">Data Obat</a>
+                    <a class="nav-item nav-link active" href="inputdataobat.php">Form input Obat</a>
+                    <a class="nav-item nav-link" href="index.php">Data Apoteker</a>
                 </div>
             </div>
         </div>
@@ -44,7 +46,7 @@ if (isset($_POST["simpan"])) {
     <div class="container">
         <h4 class="text-center pt-2">Input Data Obat</h4>
         <div class="col-6 m-auto">
-            <form method="POST" action="">
+            <form method="POST" action="proses_input.php">
                 <div class="form-group">
                     <label for="">kode Obat</label>
                     <input name="kodeobat" type="text" class="form-control">

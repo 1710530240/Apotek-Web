@@ -1,3 +1,6 @@
+<?php
+include "../koneksi/koneksi.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="../html/css/bootstrap.css">
-    <link rel="stylesheet" href="../html/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 
 <body>
@@ -19,9 +22,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="DataObat.html">Data Obat</a>
-                    <a class="nav-item nav-link" href="inputdataobat.html">Form input Obat</a>
-                    <a class="nav-item nav-link" href="card.html">Data Apoteker</a>
+                    <a class="nav-item nav-link active" href="dataobat.php">Data Obat</a>
+                    <a class="nav-item nav-link" href="inputdataobat.php">Form input Obat</a>
+                    <a class="nav-item nav-link" href="apoteker/index.php">Data Apoteker</a>
                 </div>
             </div>
         </div>

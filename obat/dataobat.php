@@ -1,11 +1,15 @@
+<?php
+include '../koneksi/koneksi.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.css" />
-    <link rel="stylesheet" href="../html/css/bootstrap.css">
-    <link rel="stylesheet" href="../html/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 
 <body>
@@ -17,9 +21,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="DataObat.html">Data Obat</a>
-                    <a class="nav-item nav-link" href="inputdataobat.html">Form input Obat</a>
-                    <a class="nav-item nav-link" href="card.html">Data Apoteker</a>
+                    <a class="nav-item nav-link active" href="dataobat.php">Data Obat</a>
+                    <a class="nav-item nav-link" href="inputdataobat.php">Form input Obat</a>
+                    <a class="nav-item nav-link" href="index.php">Data Apoteker</a>
                 </div>
             </div>
         </div>
@@ -42,7 +46,11 @@
 
                     </div>
                     <div class="modal-body">
-                        <form action="proses_input.html">
+                        <form action="proses_input.php">
+                            <div class="form-group">
+                                <label name="kodeobat" for="">kode obat</label>
+                                <input type="text" class="form-control">
+                            </div>
                             <div class="form-group">
                                 <label for="">Nama Obat</label>
                                 <input type="text" class="form-control">
@@ -90,134 +98,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Amoxiclin</td>
-                    <td>tablet</td>
-                    <td>15000</td>
-                    <td>18000</td>
-                    <td>12 november 2019</td>
-                    <td>
-                        <a href="">
-                            <button class="btn btn-primary">Edit</button>
-                        </a>
-                        <a href="">
-                            <button class="btn btn-danger">delete</button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Amoxiclin</td>
-                    <td>tablet</td>
-                    <td>15000</td>
-                    <td>18000</td>
-                    <td>12 november 2019</td>
-                    <td>
-                        <a href="">
-                            <button class="btn btn-primary">Edit</button>
-                        </a>
-                        <a href="">
-                            <button class="btn btn-danger">delete</button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Amoxiclin</td>
-                    <td>tablet</td>
-                    <td>15000</td>
-                    <td>18000</td>
-                    <td>12 november 2019</td>
-                    <td>
-                        <a href="">
-                            <button class="btn btn-primary">Edit</button>
-                        </a>
-                        <a href="">
-                            <button class="btn btn-danger">delete</button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Amoxiclin</td>
-                    <td>tablet</td>
-                    <td>15000</td>
-                    <td>18000</td>
-                    <td>12 november 2019</td>
-                    <td>
-                        <a href="">
-                            <button class="btn btn-primary">Edit</button>
-                        </a>
-                        <a href="">
-                            <button class="btn btn-danger">delete</button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Amoxiclin</td>
-                    <td>tablet</td>
-                    <td>15000</td>
-                    <td>18000</td>
-                    <td>12 november 2019</td>
-                    <td>
-                        <a href="">
-                            <button class="btn btn-primary">Edit</button>
-                        </a>
-                        <a href="">
-                            <button class="btn btn-danger">delete</button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>paracetamol</td>
-                    <td>tablet</td>
-                    <td>10000</td>
-                    <td>12000</td>
-                    <td>12 november 2019</td>
-                    <td>
-                        <a href="">
-                            <button class="btn btn-primary">Edit</button>
-                        </a>
-                        <a href="">
-                            <button class="btn btn-danger">delete</button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>bodrex</td>
-                    <td>tablet</td>
-                    <td>2000</td>
-                    <td>3000</td>
-                    <td>12 november 2019</td>
-                    <td>
-                        <a href="">
-                            <button class="btn btn-primary">Edit</button>
-                        </a>
-                        <a href="">
-                            <button class="btn btn-danger">delete</button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>tramadol</td>
-                    <td>tablet</td>
-                    <td>5000</td>
-                    <td>8000</td>
-                    <td>12 november 2019</td>
-                    <td>
-                        <a href="">
-                            <button class="btn btn-primary">Edit</button>
-                        </a>
-                        <a href="">
-                            <button class="btn btn-danger">delete</button>
-                        </a>
-                    </td>
-                </tr>
+                <?php
+                global $conn;
+                $query = "SELECT * FROM obat";
+                $no = 1;
+                $result = mysqli_query($conn, $query);
+                while ($data = mysqli_fetch_object($result)) :
+                    ?>
+                    <tr>
+                        <td><?= $no ?></td>
+                        <td><?= $data->nama_obat ?></td>
+                        <td><?= $data->jenis_obat ?></td>
+                        <td><?= $data->harga_beli ?></td>
+                        <td><?= $data->harga_jual ?></td>
+                        <td><?= $data->expired ?></td>
+                        <td>
+                            <a href="edit.php?kode=<?= $data->kode ?>" class="btn btn-warning">edit</a>
+                            <a href="hapus.php?kode=<?= $data->kode ?>" onclick="return confirm('yakin mau dihapus?')" class="btn btn-danger">delete</a>
+
+                        </td>
+                    </tr>
+                <?php
+                    $no++;
+                endwhile;
+                ?>
             </tbody>
         </table>
     </div>
